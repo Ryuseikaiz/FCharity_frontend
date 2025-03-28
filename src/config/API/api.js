@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // 📌 Sử dụng biến môi trường để lấy URL API
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080/";
+const API_BASE_URL = "https://fcharity.azurewebsites.net";
 
 export const API = axios.create({
     baseURL: API_BASE_URL,

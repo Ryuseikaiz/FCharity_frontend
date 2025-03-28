@@ -8,11 +8,13 @@ import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import RequestActiveCarousel from "../../components/RequestActiveCarousel/RequestActiveCarousel";
 import { Badge, Card } from "antd";
 import { CheckCircleOutlined, UserOutlined, HomeOutlined } from "@ant-design/icons";
+import { Helmet } from "react-helmet-async"; // Import Helmet để chèn meta tags
+
 const { Title, Text, Paragraph } = Typography;
 const items =
   [
     {
-      href: '/requests/myrequests',
+      href: '/',
       title: <HomeOutlined />,
     },
     {
@@ -80,6 +82,12 @@ const RequestDetailScreen = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+  };
+
+  const handleShare = () => {
+    const shareUrl = window.location.href; // Lấy URL hiện tại của trang
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+    window.open(facebookShareUrl, "_blank", "width=600,height=400");
   };
 
   return (
@@ -172,7 +180,7 @@ const RequestDetailScreen = () => {
               Register
             </Button>
           )}
-            <Button type="default" block style={{ flex: 1 }}>
+            <Button type="default" block style={{ flex: 1 }} onClick={handleShare}>
               Share
             </Button>
           </div>
